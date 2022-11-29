@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/titleFragment">
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.catdiary.screens.fragments.title.TitleFragment"
+        android:label="Cat Diary"
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/action_titleFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.catdiary.screens.fragments.login.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_logEventFragment"
+            app:destination="@id/logEventFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment2"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.catdiary.screens.fragments.login.SignUpFragment"
+        android:label="Sign Up!"
+        tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.catdiary.screens.fragments.profile.ProfileFragment"
+        android:label="Your Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/logEventFragment"
+        android:name="com.example.catdiary.screens.fragments.log.list.LogEventFragment"
+        android:label="Log"
+        tools:layout="@layout/fragment_log_event" >
+        <action
+            android:id="@+id/action_logEventFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_logEventFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.catdiary.screens.fragments.log.add.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_logEventFragment"
+            app:destination="@id/logEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.catdiary.screens.fragments.update.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_logEventFragment"
+            app:destination="@id/logEventFragment" />
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.catdiary.screens.model.User" />
+    </fragment>
+</navigation>
