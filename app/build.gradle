@@ -18,7 +18,11 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        javaCompileOptions{
+            annotationProcessorOptions{
+                arguments= ["room.schemaLocation":
+                                    "$projectDir/schemas".toString()]
+            }}
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -46,6 +50,12 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.5.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+
+
+//    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
+
+    //Material
+    implementation 'com.google.android.material:material:<version>'
 
     //Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'

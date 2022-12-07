@@ -10,10 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.catdiary.R
 import com.example.catdiary.databinding.FragmentLogEventBinding
-import com.example.catdiary.screens.viewmodel.UserViewModel
+import com.example.catdiary.screens.viewmodel.LogViewModel
 
 class LogEventFragment : Fragment() {
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var mLogViewModel: LogViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -26,10 +26,10 @@ class LogEventFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        //UserViewModel
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
-            adapter.setData(user)
+        //LogViewModel
+        mLogViewModel = ViewModelProvider(this).get(LogViewModel::class.java)
+        mLogViewModel.readAllData.observe(viewLifecycleOwner, Observer { log ->
+            adapter.setData(log)
         })
 
         return binding.root

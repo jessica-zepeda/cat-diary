@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.catdiary.screens.fragments.log.add.AddFragment"
-        android:label="fragment_add"
+        android:label="Add Event"
         tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addFragment_to_logEventFragment"
@@ -71,7 +71,7 @@
             android:id="@+id/action_updateFragment_to_logEventFragment"
             app:destination="@id/logEventFragment" />
         <argument
-            android:name="currentUser"
-            app:argType="com.example.catdiary.screens.model.User" />
+            android:name="currentLog"
+            app:argType="com.example.catdiary.screens.model.Log" />
     </fragment>
 </navigation>

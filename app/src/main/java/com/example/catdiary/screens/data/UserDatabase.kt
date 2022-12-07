@@ -4,11 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.catdiary.screens.model.Log
 import com.example.catdiary.screens.model.User
 
-@Database(entities = [User::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, Log::class], version = 2, exportSchema = true)
 abstract class UserDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun logDao(): LogDao
+
 
     companion object{
         @Volatile
@@ -24,10 +27,13 @@ abstract class UserDatabase: RoomDatabase() {
                     context.applicationContext,
                     UserDatabase::class.java,
                     "user_database"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 return instance
             }
         }
     }
+
 }
