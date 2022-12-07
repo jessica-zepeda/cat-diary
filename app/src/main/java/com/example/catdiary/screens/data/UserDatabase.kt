@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.catdiary.screens.model.Log
 import com.example.catdiary.screens.model.User
 
-@Database(entities = [User::class, Log::class], version = 2, exportSchema = true)
+@Database(entities = [User::class, Log::class], version = 3, exportSchema = true)
 abstract class UserDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun logDao(): LogDao

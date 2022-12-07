@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.catdiary.R
 import com.example.catdiary.databinding.FragmentLogEventBinding
@@ -25,7 +26,6 @@ class LogEventFragment : Fragment() {
         val recyclerView =  binding.recyclerviewLog
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         //LogViewModel
         mLogViewModel = ViewModelProvider(this).get(LogViewModel::class.java)
         mLogViewModel.readAllData.observe(viewLifecycleOwner, Observer { log ->

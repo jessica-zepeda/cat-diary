@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,7 @@ class LogAdapter : RecyclerView.Adapter<LogAdapter.MyViewHolder>(){
 //        val quantityView: TextView
         val dateView: TextView
         val eventView: TextView
-        val rowLayout: ConstraintLayout
+        val rowLayout: CardView
 
         init {
             // Define click listener for the ViewHolder's View.
@@ -27,7 +28,7 @@ class LogAdapter : RecyclerView.Adapter<LogAdapter.MyViewHolder>(){
 //            quantityView = itemView.findViewById(R.id.age_txt)
             dateView = itemView.findViewById(R.id.dateAndTime)
             eventView = itemView.findViewById(R.id.eventTxt)
-            rowLayout = itemView.findViewById(R.id.rowLayout)
+            rowLayout = itemView.findViewById(R.id.cardItem)
         }
     }
 
@@ -44,16 +45,14 @@ class LogAdapter : RecyclerView.Adapter<LogAdapter.MyViewHolder>(){
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = logList[position]
-//        holder.idView.text = currentItem.id.toString()
-//        holder.quantityView.text = currentItem.age.toString()
 
         holder.dateView.text = currentItem.dateAndTime
         holder.eventView.text = currentItem.event
 
-//        holder.rowLayout.setOnClickListener{
-//            val action = LogEventFragmentDirections.actionLogEventFragmentToUpdateFragment(currentItem)
-//            holder.itemView.findNavController().navigate(action)
-//        }
+        holder.rowLayout.setOnClickListener{
+            val action = LogEventFragmentDirections.actionLogEventFragmentToUpdateFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     fun setData(log: List<Log>){

@@ -3,7 +3,6 @@ package com.example.catdiary
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowInsetsCompat.toWindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         // Hook your navigation controller to bottom navigation view
         navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, nd: NavDestination, _ ->
-            if (nd.id == R.id.titleFragment || nd.id == R.id.signUpFragment || nd.id == R.id.loginFragment || nd.id == R.id.addFragment || nd.id == R.id.updateFragment) {
+            if (nd.id == R.id.titleFragment || nd.id == R.id.signUpFragment || nd.id == R.id.loginFragment || nd.id == R.id.addFragment || nd.id == R.id.updateFragment || nd.id == R.id.profileUpdateFragment) {
                 navView.visibility = View.GONE
             } else {
                 navView.visibility = View.VISIBLE

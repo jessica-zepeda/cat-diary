@@ -2,101 +2,181 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.fragments.profile.ProfileFragment">
-
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/titleConstraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- TODO: Update blank fragment layout -->
+
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="293dp"
+            android:id="@+id/yourProfileTxt"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:text="Your Profile"
+            android:layout_marginTop="40dp"
+            android:text="@string/profile"
             android:textAlignment="center"
-            android:textSize="24sp"
+            android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/editProfileBtn"
+            app:layout_constraintHorizontal_bias="0.858"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/editProfileBtn"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="68dp"
+            android:src="@drawable/ic_baseline_edit_24_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/profileImage"
             android:layout_width="100dp"
-            android:layout_height="107dp"
+            android:layout_height="100dp"
+            android:elevation="2dp"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="16dp"
+            android:background="#595959"
+            android:contentDescription="@string/profileImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/name_text"
+            android:id="@+id/nameTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="92dp"
             android:text="Name"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
-            app:layout_constraintHorizontal_bias="0.173"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/profileImage"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/petName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Name"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
+
 
         <TextView
             android:id="@+id/age_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="56dp"
-            android:text="Age"
-            android:textSize="20sp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:text="Age:"
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_text" />
+            app:layout_constraintTop_toBottomOf="@+id/petName" />
+
+
+        <TextView
+            android:id="@+id/petAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Age"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/age_text"
+            app:layout_constraintTop_toBottomOf="@+id/petName" />
 
         <TextView
             android:id="@+id/bday_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Birthday"
+            android:layout_marginTop="20dp"
+            android:text="Birthday:"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.105"
+            app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/age_text" />
+
+        <TextView
+            android:id="@+id/petBday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Birthday"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/bday_text"
+            app:layout_constraintTop_toBottomOf="@+id/petAge" />
 
         <TextView
             android:id="@+id/breed_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Breed"
+            android:text="Breed:"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.101"
+            app:layout_constraintHorizontal_bias="0.061"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bday_text" />
+        <TextView
+            android:id="@+id/petBreed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Breed"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/breed_text"
+            app:layout_constraintTop_toBottomOf="@+id/petBday" />
 
         <TextView
             android:id="@+id/chip_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Chip #"
+            android:layout_marginTop="20dp"
+            android:text="Chip #:"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.107"
+            app:layout_constraintHorizontal_bias="0.061"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breed_text" />
+        <TextView
+            android:id="@+id/petChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Chip"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/chip_text"
+            app:layout_constraintTop_toBottomOf="@+id/petBreed" />
 
         <TextView
             android:id="@+id/provider_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="30dp"
             android:text="Healthcare Providers"
-            android:textSize="16sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintHorizontal_bias="0.087"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chip_text" />
 
@@ -104,68 +184,85 @@
             android:id="@+id/vet_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:text="Vet Name"
+            android:layout_marginTop="20dp"
+            android:text="Vet Name:"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/contact_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintHorizontal_bias="0.108"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/provider_text"
             app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/petVetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Vet Name"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/vet_text"
+            app:layout_constraintTop_toBottomOf="@+id/provider_text" />
+
 
         <TextView
             android:id="@+id/contact_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Contact Info"
-            app:layout_constraintBottom_toTopOf="@+id/insurance_text"
+            android:layout_marginTop="20dp"
+            android:text="Contact Info:"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.113"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.11"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vet_text" />
+        <TextView
+            android:id="@+id/vetContactInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Contact Info"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/contact_text"
+            app:layout_constraintTop_toBottomOf="@+id/petVetName" />
 
         <TextView
             android:id="@+id/insurance_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="20dp"
             android:text="Insurance Provider"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/policy_text"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.132"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.079"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contact_text" />
 
         <TextView
             android:id="@+id/policy_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Policy Number"
-            app:layout_constraintBottom_toTopOf="@+id/insurancecontact_text"
+            android:layout_marginTop="20dp"
+            android:text="Policy Number:"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.118"
-            app:layout_constraintStart_toStartOf="parent" />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/insurance_text" />
         <TextView
-            android:id="@+id/insurancecontact_text"
+            android:id="@+id/vetPolicy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="148dp"
-            android:text="Contact Info"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.11"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Policy Number"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/policy_text"
+            app:layout_constraintTop_toBottomOf="@+id/insurance_text" />
 
-<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--            android:id="@+id/bottom_nav_view"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:itemBackground="@color/design_default_color_primary"-->
-<!--            app:itemIconTint="#fff"-->
-<!--            app:itemTextColor="#fff"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:menu="@menu/bottom_nav_menu" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </layout>

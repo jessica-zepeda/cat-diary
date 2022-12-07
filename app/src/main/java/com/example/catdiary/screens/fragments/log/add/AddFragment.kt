@@ -16,6 +16,9 @@ import com.example.catdiary.R
 import com.example.catdiary.databinding.FragmentAddBinding
 import com.example.catdiary.screens.model.Log
 import com.example.catdiary.screens.viewmodel.LogViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,6 +26,7 @@ class AddFragment : Fragment() {
 
     private lateinit var mLogViewModel: LogViewModel
     private lateinit var binding: FragmentAddBinding
+    var selectedItemIndex = 0
 //    private var formatDate = SimpleDateFormat("dd MMMM YYYY", Locale.US)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -30,7 +34,8 @@ class AddFragment : Fragment() {
             R.layout.fragment_add,container,false)
 
         mLogViewModel  = ViewModelProvider(this).get(LogViewModel::class.java)
-
+        val items = arrayOf("Food", "Medicine", "Stool/Pee", "Water", "Hairball", "Miscellaneous")
+        (binding.eventDropdownTextField.editText as? MaterialAutoCompleteTextView)?.setSimpleItems(items)
 
         binding.pickTimeBtn.setOnClickListener(View.OnClickListener{
             val currentDateTime = Calendar.getInstance()
@@ -51,6 +56,25 @@ class AddFragment : Fragment() {
             }, startYear, startMonth, startDay).show()
         })
 
+        binding.typeQuantitySpinner.setOnClickListener(View.OnClickListener {
+            val quantityType = arrayOf("Grams", "Cups", "Oz","Doses","Pieces","Pills")
+            var selectedQuantityType = quantityType[selectedItemIndex]
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Quantity Type")
+                .setSingleChoiceItems(quantityType, selectedItemIndex){ dialog, which ->
+                    selectedItemIndex = which
+                    selectedQuantityType = quantityType[which]
+                }
+                .setPositiveButton("Ok"){ _, _ ->
+                    showSnackBar("$selectedQuantityType Selected")
+                    binding.typeQuantitySpinner.text = selectedQuantityType
+                }
+                .setNeutralButton("Cancel"){ _, _ ->
+                    //Respond to neutral button press
+                }
+                .show()
+        })
+
         binding.addBtn.setOnClickListener {
             insertDataToDatabase()
         }
@@ -58,14 +82,15 @@ class AddFragment : Fragment() {
     }
 
     private fun insertDataToDatabase() {
-        val eventLog = binding.addEvent.text.toString()
+        val eventLog = binding.eventDropdownText.text.toString()
         val dateAndTime = binding.timeTv.text.toString()
         val quantity = binding.addQuantity.text.toString()
+        val quantityType = binding.typeQuantitySpinner.text.toString()
         val comment = binding.addComment.text.toString()
 
-        if(inputCheck(eventLog,dateAndTime,quantity, comment)){
+        if(inputCheck(eventLog,dateAndTime,quantity,quantityType, comment)){
             // Create Log Object
-            val log = Log(0,dateAndTime,eventLog,quantity, comment)
+            val log = Log(0,dateAndTime,eventLog,quantity,quantityType, comment)
 
             //Add Data to Database
             mLogViewModel.addLog(log)
@@ -78,8 +103,12 @@ class AddFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(eventLog: String, dateAndTime: String, quantity: String, comment: String): Boolean{
-        return !(TextUtils.isEmpty(eventLog) && TextUtils.isEmpty(dateAndTime) &&  TextUtils.isEmpty(quantity) && TextUtils.isEmpty(comment))
+    private fun inputCheck(eventLog: String, dateAndTime: String, quantity: String, quantityType: String, comment: String): Boolean{
+        return !(TextUtils.isEmpty(eventLog) && TextUtils.isEmpty(dateAndTime) &&  TextUtils.isEmpty(quantity)&&  TextUtils.isEmpty(quantityType) && TextUtils.isEmpty(comment))
+    }
+
+    private fun showSnackBar(msg: String){
+        Snackbar.make(binding.root, msg, Snackbar.LENGTH_SHORT).show()
     }
 
 }

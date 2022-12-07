@@ -13,5 +13,6 @@ data class Log(
     val dateAndTime: String,
     val event: String,
     val quantity: String,
+    val quantityType: String,
     val comment: String,
 ): Parcelable

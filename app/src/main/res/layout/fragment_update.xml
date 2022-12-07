@@ -64,21 +64,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pickTimeBtn" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/updateEvent"
-                android:layout_width="match_parent"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/eventDropdownTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:inputType="text"
-                android:maxLines="1"
-                android:ems="10"
-                android:hint="Event"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/eventTextView">
 
+                <AutoCompleteTextView
+                    android:id="@+id/updateEventDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:text="Food" />
 
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:id="@+id/quantityTextView1"
                 android:layout_width="wrap_content"
@@ -91,7 +96,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/updateEvent" />
+                app:layout_constraintTop_toBottomOf="@+id/eventDropdownTextField" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/updateQuantity"
@@ -121,7 +126,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/quantityTextView1" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/updateComment"
+                android:id="@+id/updateCommentLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -133,7 +138,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:id="@+id/updateComment"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,7 +152,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/updateComment" />
+                app:layout_constraintTop_toBottomOf="@+id/updateCommentLayout" />
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/group"
