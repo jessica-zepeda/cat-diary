@@ -15,9 +15,3 @@ data class User(
     val age: Int
 ): Parcelable
 
-//@Entity
-//data class Log(
-//    @PrimaryKey val logId: Long,
-//    val userCreatorId: Long,
-//    val startTime:
-//)

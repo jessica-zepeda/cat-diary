@@ -2,14 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id = "@+id/profileFragment"
+        android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/profile"/>
     <item
         android:id = "@+id/addFragment"
+        android:enabled="true"
         android:icon="@drawable/ic_baseline_add_circle_outline_24"
         android:title="Add"/>
     <item
         android:id = "@+id/logEventFragment"
+        android:enabled="true"
         android:icon="@drawable/ic_baseline_format_align_justify_24"
         android:title="Log"/>
 

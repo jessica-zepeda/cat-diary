@@ -35,12 +35,20 @@
         android:id="@+id/signUpFragment"
         android:name="com.example.catdiary.screens.fragments.login.SignUpFragment"
         android:label="Sign Up!"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.catdiary.screens.fragments.profile.ProfileFragment"
         android:label="Your Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_profileUpdateFragment"
+            app:destination="@id/profileUpdateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/logEventFragment"
         android:name="com.example.catdiary.screens.fragments.log.list.LogEventFragment"
@@ -56,7 +64,7 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.catdiary.screens.fragments.log.add.AddFragment"
-        android:label="fragment_add"
+        android:label="Add Event"
         tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addFragment_to_logEventFragment"
@@ -65,13 +73,22 @@
     <fragment
         android:id="@+id/updateFragment"
         android:name="com.example.catdiary.screens.fragments.update.UpdateFragment"
-        android:label="fragment_update"
+        android:label="Update Log"
         tools:layout="@layout/fragment_update" >
         <action
             android:id="@+id/action_updateFragment_to_logEventFragment"
             app:destination="@id/logEventFragment" />
         <argument
-            android:name="currentUser"
-            app:argType="com.example.catdiary.screens.model.User" />
+            android:name="currentLog"
+            app:argType="com.example.catdiary.screens.model.Log" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileUpdateFragment"
+        android:name="com.example.catdiary.screens.fragments.profile.ProfileUpdateFragment"
+        android:label="Update Profile"
+        tools:layout="@layout/fragment_profile_update" >
+        <action
+            android:id="@+id/action_profileUpdateFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>
