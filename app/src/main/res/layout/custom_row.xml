@@ -6,29 +6,20 @@
     android:layout_height="wrap_content"
     android:padding="5dp">
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/id_txt"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="1"-->
-    <!--        android:textSize="40sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="4dp"
         android:clickable="true"
         android:focusable="true"
         android:padding="10dp"
         app:cardBackgroundColor="#E1E1E1"
-        app:cardElevation="4dp"
-        app:strokeColor="#00FFFFFF"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="10dp">
+        app:cardElevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#00FFFFFF">
 
         <TextView
             android:id="@+id/dateAndTime"
